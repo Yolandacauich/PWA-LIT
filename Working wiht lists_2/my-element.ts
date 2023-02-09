@@ -1,20 +1,19 @@
 import {LitElement, html} from 'lit';
 import {customElement, state} from 'lit/decorators.js';
-import {map} from 'lit/directives/map.js';
 
 @customElement('my-element')
 class MyElement extends LitElement {
   @state()
-  items = new Set(['manzana', 'Plátano', 'Uva', 'Naranja', 'Lima'])
+  names = ['Chandler', 'Phoebe', 'Joey', 'Monica', 'Rachel', 'Ross'];
 
   render() {
     return html`
-      <p>MISFURTOS</p>
+      <p>LISTA DE NOMBRES QUE CONTIENE LA LETRA "e"</p>
       <ul>
-        ${map(this.items, (item) => html`<li>${item}</li>`)}
+      ${this.names
+        .filter((name) => name.match(/e/i))
+        .map((name) => html`<li>${name}</li>`)}
       </ul>
     `;
   }
 }
-
-
